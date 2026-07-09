@@ -153,9 +153,10 @@ function el(tag, className) {
   return node;
 }
 
-function scrollBottom() {
-  heroMsgs.scrollTop = heroMsgs.scrollHeight;
-  demoMsgs.scrollTop = demoMsgs.scrollHeight;
+function scrollBottom(smooth) {
+  [heroMsgs, demoMsgs].forEach(function (c) {
+    c.scrollTo({ top: c.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
+  });
 }
 
 function setTyped(text) {
@@ -181,7 +182,7 @@ function addUserBubble(text) {
     row.appendChild(col);
     container.appendChild(row);
   });
-  scrollBottom();
+  scrollBottom(true);
 }
 
 function addBotBubble(hasProducts) {
@@ -204,7 +205,7 @@ function addBotBubble(hasProducts) {
     container.appendChild(row);
     return { textNode: textNode, caret: caret, col: col, skel: skel };
   });
-  scrollBottom();
+  scrollBottom(true);
   return refs;
 }
 
@@ -231,7 +232,7 @@ function showProducts(refs, products) {
     });
     ref.col.appendChild(wrap);
   });
-  scrollBottom();
+  scrollBottom(true);
 }
 
 function showTyping() {
@@ -241,7 +242,7 @@ function showTyping() {
     container.appendChild(t);
     return t;
   });
-  scrollBottom();
+  scrollBottom(true);
 }
 
 function hideTyping() {
@@ -380,7 +381,7 @@ document.querySelectorAll('.accent-dot').forEach(function (btn) {
   bar.classList.add('bar-hidden');
   var io = new IntersectionObserver(function (entries) {
     bar.classList.toggle('bar-hidden', !entries[0].isIntersecting);
-  }, { threshold: 0.3 });
+  }, { threshold: 0.55 });
   io.observe(panel);
 })();
 
