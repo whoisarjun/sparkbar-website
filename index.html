@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sparkbar — AI sales assistant for Shopify stores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a id="top"></a>
+
+<nav id="nav" class="nav">
+  <div class="nav-shell">
+    <a href="#top" class="nav-logo">
+      <span class="nav-logo-text">Sparkbar</span>
+    </a>
+
+    <div class="nav-links">
+      <span class="nav-divider"></span>
+      <a href="#demo" class="nav-link">Demo</a>
+      <a href="#how" class="nav-link">How it works</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <div class="nav-cta-wrap">
+        <a href="[INSERT BOOKING LINK]" class="nav-cta">Book a call</a>
+      </div>
+    </div>
+
+    <div class="nav-mobile">
+      <a href="[INSERT BOOKING LINK]" class="nav-cta nav-cta--mobile">Book a call</a>
+      <button type="button" id="burger" class="nav-burger" aria-label="Menu">
+        <span class="nav-burger-bar nav-burger-bar--top"></span>
+        <span class="nav-burger-bar nav-burger-bar--bottom"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="#demo" class="mobile-menu-link">Demo</a>
+    <a href="#how" class="mobile-menu-link">How it works</a>
+    <a href="#pricing" class="mobile-menu-link">Pricing</a>
+    <a href="#faq" class="mobile-menu-link">FAQ</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="hero" class="hero">
+
+  <div class="receipt receipt--a">
+    <div class="receipt-head">3:12 AM · SAT</div>
+    <div>Q: "fits a 9×10 room?"</div>
+    <div class="receipt-ok">✓ answered in 4s</div>
+  </div>
+  <div class="receipt receipt--b">
+    <div class="receipt-head">11:47 PM · THU</div>
+    <div>Q: "oak or walnut?"</div>
+    <div class="receipt-ok">✓ added to cart</div>
+  </div>
+
+  <div class="hero-inner">
+    <h1 class="hero-title">
+      Give every product page a <em>salesperson</em>.
+    </h1>
+
+    <p class="hero-sub">
+      It answers shoppers' questions straight from your catalog and walks them to checkout.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="[INSERT BOOKING LINK]" class="btn-primary" data-tilt="1">Book a setup call<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M6 3.5l4.5 4.5L6 12.5" stroke="oklch(17% 0.03 190)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+      <a href="#demo" class="btn-secondary" data-tilt="1">Try the live demo<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M6 3.5l4.5 4.5L6 12.5" stroke="oklch(90% 0.01 200)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+    </div>
+  </div>
+
+  <div class="browser-wrap">
+    <div class="browser">
+
+      <div class="browser-chrome">
+        <div class="browser-dots">
+          <span class="browser-dot browser-dot--r"></span>
+          <span class="browser-dot browser-dot--y"></span>
+          <span class="browser-dot browser-dot--g"></span>
+        </div>
+        <div class="browser-url">
+          <span class="browser-lock"></span>
+          wrenfieldhome.com
+        </div>
+        <div class="browser-spacer"></div>
+      </div>
+
+      <div class="browser-body">
+
+        <div class="store-header">
+          <div class="store-brand">
+            <span class="store-logo">
+              <span class="store-logo-star"></span>
+            </span>
+            <span class="store-name">Wrenfield Home</span>
+          </div>
+          <div class="store-nav">
+            <span>New</span><span>Living</span><span>Bedroom</span><span class="store-nav-sale">Sale</span>
+          </div>
+          <div class="store-icons">
+            <span class="icon-search"><span class="icon-search-handle"></span></span>
+            <span class="icon-bag">
+              <span class="icon-bag-body"></span>
+              <span class="icon-bag-handle"></span>
+              <span class="icon-bag-badge">2</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="store-content">
+          <div class="store-kicker">Compact collection</div>
+          <div class="store-title">Made for small spaces</div>
+          <div class="store-sub">Desks, shelves and storage sized for rooms that don't have room to spare.</div>
+
+          <div class="shop-grid">
+            <div>
+              <div class="shop-img shop-img--warm"></div>
+              <div class="shop-name">Wren Compact Desk</div>
+              <div class="shop-price">$249</div>
+            </div>
+            <div>
+              <div class="shop-img shop-img--sage"></div>
+              <div class="shop-name">Poplar Fold Desk</div>
+              <div class="shop-price">$189</div>
+            </div>
+            <div>
+              <div class="shop-img shop-img--stone"></div>
+              <div class="shop-name">Aster Wall Shelf</div>
+              <div class="shop-price">$129</div>
+            </div>
+            <div>
+              <div class="shop-img shop-img--dusk"></div>
+              <div class="shop-name">Nook Storage Bench</div>
+              <div class="shop-price">$215</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget">
+          <div class="widget-head">
+            <span class="widget-live"></span>
+            <div class="widget-id">
+              <span class="widget-name">Sparkbar</span>
+              <span class="widget-role">Store assistant · On duty</span>
+            </div>
+            <span class="widget-time">3:12 AM</span>
+          </div>
+
+          <div id="hero-msgs" class="widget-msgs chat chat--sm"></div>
+
+          <div class="widget-input-row">
+            <div class="widget-input">Ask about sizing, stock, materials…</div>
+            <div class="send-btn send-btn--sm">
+              <span class="send-arrow">➤</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="demo">
+  <div class="demo-container">
+    <div class="demo-header">
+      <div class="kicker">Live demo</div>
+      <h2 class="section-title">Watch it answer — then make it yours.</h2>
+      <p class="demo-lede">This is Sparkbar dropped into a sample storefront, asking and answering on its own. Pick a store type and a color on the right, and the catalog, the script, and the look all change to match.</p>
+    </div>
+
+    <div class="demo-layout">
+
+      <div class="demo-panel">
+        <div class="demo-panel-head">
+          <span class="demo-icon">
+            <span class="demo-icon-star"></span>
+          </span>
+          <div class="demo-id">
+            <span id="demo-store-name" class="demo-store-name">Wrenfield Home</span>
+            <span id="demo-store-tagline" class="demo-store-tagline">Home furnishings</span>
+          </div>
+        </div>
+
+        <div id="demo-msgs" class="demo-msgs chat chat--lg"></div>
+
+        <div class="demo-input-row">
+          <div class="demo-input">
+            <span id="demo-typed" class="demo-typed"><span id="demo-typed-text"></span><span class="input-cursor"></span></span>
+            <span id="demo-placeholder" class="input-placeholder">Ask about sizing, stock, materials…</span>
+          </div>
+          <div class="send-btn send-btn--lg">
+            <span class="send-arrow send-arrow--lg">➤</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="customize">
+        <div>
+          <div class="kicker kicker--tight">Customize</div>
+          <h3 class="customize-title">Match it to your store.</h3>
+          <p class="customize-sub">The brain underneath stays the same. What it sells and what it looks like change to fit the shop.</p>
+        </div>
+
+        <div>
+          <div class="option-label">Store type</div>
+          <div class="store-opts">
+            <button type="button" class="store-opt active" data-store="home">
+              <span class="store-opt-label">Home furnishings</span>
+              <span class="store-opt-sub">Wrenfield Home</span>
+            </button>
+            <button type="button" class="store-opt" data-store="fashion">
+              <span class="store-opt-label">Fashion &amp; apparel</span>
+              <span class="store-opt-sub">Marlow &amp; Co</span>
+            </button>
+            <button type="button" class="store-opt" data-store="beauty">
+              <span class="store-opt-label">Skincare &amp; beauty</span>
+              <span class="store-opt-sub">Alder &amp; Bloom</span>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <div class="option-label">Accent color</div>
+          <div class="accent-opts">
+            <button type="button" class="accent-dot active" data-accent="spruce" aria-label="Accent color" style="--dot:oklch(33% 0.04 200);"></button>
+            <button type="button" class="accent-dot" data-accent="brass" aria-label="Accent color" style="--dot:oklch(52% 0.1 75);"></button>
+            <button type="button" class="accent-dot" data-accent="moss" aria-label="Accent color" style="--dot:oklch(48% 0.09 160);"></button>
+            <button type="button" class="accent-dot" data-accent="clay" aria-label="Accent color" style="--dot:oklch(52% 0.1 40);"></button>
+            <button type="button" class="accent-dot" data-accent="plum" aria-label="Accent color" style="--dot:oklch(48% 0.09 320);"></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="grounded" class="grounded">
+  <div class="grounded-container">
+
+    <div class="grounded-chat-col">
+      <div class="grounded-card">
+        <div class="grounded-bubble-user">Is the Wren desk okay for someone 6'5"?</div>
+        <div class="grounded-bubble-bot">The listing doesn't specify a recommended height, so I won't guess. What I can tell you: the desk height is fixed at 29 in (74 cm) and the legroom clearance is 27 in (69 cm).</div>
+        <div class="grounded-note">
+          <span class="grounded-note-dot"></span>
+          No matching spec → sticks to the facts instead of inventing one
+        </div>
+      </div>
+    </div>
+
+    <div class="grounded-copy">
+      <div class="kicker kicker--brass">Grounded, not guessing</div>
+      <h2 class="grounded-title">It won't make things up.</h2>
+      <p class="grounded-p1">Most chatbots fill silence with a confident guess. Sparkbar answers only from your product data. When the answer isn't there, it says so, plain and simple.</p>
+      <p class="grounded-p2">A wrong answer is a return, a chargeback, or a bad review. Sparkbar is built to never be the reason one happens.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="outcomes" class="outcomes">
+  <div class="outcomes-container">
+    <div class="outcomes-header">
+      <h2 class="section-title">What it does for your store.</h2>
+    </div>
+    <div class="grid-3 outcomes-grid">
+      <div class="outcome-card">
+        <span class="outcome-num">01</span>
+        <div class="outcome-icon">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="oklch(40% 0.055 200)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"></circle><line x1="14.8" y1="14.8" x2="20" y2="20"></line></svg>
+        </div>
+        <h3 class="outcome-title">Finds the right fit, fast</h3>
+        <p class="outcome-text">Someone describes a small bedroom and a budget. Sparkbar skips the browsing and hands them two options that actually work: sized, priced, and ready to add to cart.</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-num">02</span>
+        <div class="outcome-icon">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="oklch(40% 0.055 200)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"></path><path d="M8.5 9.5l2 2 4-4"></path></svg>
+        </div>
+        <h3 class="outcome-title">Takes the obvious questions off your plate</h3>
+        <p class="outcome-text">Stock, sizing, materials, shipping windows. The stuff that turns into a support ticket gets answered on the spot, before it ever reaches an inbox.</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-num">03</span>
+        <div class="outcome-icon">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="oklch(40% 0.055 200)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><path d="M12 7.5V12l3 2"></path></svg>
+        </div>
+        <h3 class="outcome-title">Doesn't clock out</h3>
+        <p class="outcome-text">A question at midnight gets a real answer at midnight. No queue, no "we'll get back to you within 24 hours."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="how">
+  <div class="how-container">
+    <div class="how-header">
+      <div class="kicker">How it works</div>
+      <h2 class="section-title">Live on your store this week.</h2>
+    </div>
+
+    <div class="grid-3 how-badges">
+      <div class="how-badge-row">
+        <div class="step-num">1</div>
+        <div class="step-connector">
+          <div class="step-line"></div>
+          <svg width="13" height="14" viewBox="0 0 13 14" fill="none">
+            <path d="M2 2 L9 7 L2 12" stroke="oklch(58% 0.015 200)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="how-badge-row">
+        <div class="step-num">2</div>
+        <div class="step-connector">
+          <div class="step-line step-line--brass"></div>
+          <svg width="13" height="14" viewBox="0 0 13 14" fill="none">
+            <path d="M2 2 L9 7 L2 12" stroke="oklch(58% 0.1 75)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="how-badge-row">
+        <div class="step-num step-num--accent">3</div>
+      </div>
+    </div>
+
+    <div class="grid-3 how-steps">
+      <div>
+        <h3 class="step-title">Book a 20-minute call</h3>
+        <p class="step-text">Walk through your store and the questions shoppers ask most.</p>
+      </div>
+      <div>
+        <h3 class="step-title">Connect your catalog</h3>
+        <p class="step-text">Sparkbar syncs your Shopify products, variants, and policies. Nothing to code.</p>
+      </div>
+      <div>
+        <h3 class="step-title">Go live</h3>
+        <p class="step-text">It's answering shoppers on your storefront, usually within the same week.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="pricing">
+  <div class="pricing-container">
+    <div class="pricing-copy">
+      <div class="kicker">Pricing</div>
+      <h2 class="section-title pricing-title">One price. No per-conversation math.</h2>
+      <p class="pricing-lede">One flat rate covers everything: setup, catalog sync, and every conversation it handles. No usage tiers, no surprise line items, no math to do at the end of the month.</p>
+      <div class="pricing-note">
+        <span class="pricing-note-dot"></span>
+        Cancel anytime · Setup handled for you · Early pricing locked in
+      </div>
+    </div>
+
+    <div class="price-card">
+      <div class="price-row">
+        <span class="price-amount">$149</span>
+        <span class="price-period">/ month</span>
+      </div>
+      <p class="price-sub">Flat rate, one store. That's it.</p>
+      <div class="plan-items">
+        <div class="plan-item"><span class="plan-check">✓</span><span class="plan-text">Unlimited shopper conversations*</span></div>
+        <div class="plan-item"><span class="plan-check">✓</span><span class="plan-text">Live Shopify catalog &amp; variant sync</span></div>
+        <div class="plan-item"><span class="plan-check">✓</span><span class="plan-text">Answers grounded in your product data</span></div>
+        <div class="plan-item"><span class="plan-check">✓</span><span class="plan-text">Return, shipping &amp; policy questions handled</span></div>
+        <div class="plan-item"><span class="plan-check">✓</span><span class="plan-text">Add-to-cart recommendations</span></div>
+        <div class="plan-item"><span class="plan-check">✓</span><span class="plan-text">Says 'I don't know' instead of guessing</span></div>
+        <div class="plan-item"><span class="plan-check">✓</span><span class="plan-text">Direct support from the founding team</span></div>
+      </div>
+      <p class="fair-use">*Subject to fair use.</p>
+      <a href="[INSERT BOOKING LINK]" class="price-cta" data-tilt="1">Book a setup call</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="faq-container">
+    <h2 class="section-title faq-title">Questions, answered.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button type="button" class="faq-q">
+          <span class="faq-q-text">Will it ever invent an answer?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap">
+          <div class="faq-a-inner">
+            <p class="faq-a">No. Sparkbar answers only from your catalog and policies. When the information isn't there, it says so. It never fills the gap with a guess.</p>
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q">
+          <span class="faq-q-text">How long does setup take?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap">
+          <div class="faq-a-inner">
+            <p class="faq-a">Usually the same week. After a short call, Sparkbar syncs your Shopify catalog and goes live. You don't touch any code.</p>
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q">
+          <span class="faq-q-text">Does it work with my theme?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap">
+          <div class="faq-a-inner">
+            <p class="faq-a">Yes. Sparkbar loads as a widget on top of any Shopify theme, so there's no template surgery and nothing to maintain.</p>
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q">
+          <span class="faq-q-text">Can it actually add products to the cart?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap">
+          <div class="faq-a-inner">
+            <p class="faq-a">Yes. It recommends the right items for what a shopper described and adds them straight to the Shopify cart.</p>
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q">
+          <span class="faq-q-text">What happens if I cancel?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap">
+          <div class="faq-a-inner">
+            <p class="faq-a">Sparkbar removes itself cleanly and leaves no code behind in your theme. Cancel anytime, no notice period.</p>
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q">
+          <span class="faq-q-text">Why is it only $49 a month?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a-wrap">
+          <div class="faq-a-inner">
+            <p class="faq-a">It's early. The first stores get simple, flat pricing locked in for the life of their account while the product grows with their feedback.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="final-glow"></div>
+  <div class="final-inner">
+    <div class="final-kicker">OPEN ALWAYS</div>
+    <h2 class="final-title">Give every shopper a salesperson.</h2>
+    <p class="final-sub">Book a call, connect your catalog, and Sparkbar is answering shoppers on your store within the week, for $49 a month.</p>
+    <a href="[INSERT BOOKING LINK]" class="final-btn" data-tilt="1">Book a setup call</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Sparkbar</span>
+      <span class="footer-tag"><br></span>
+    </div>
+    <div class="footer-meta">AI sales assistant for Shopify · © 2025</div>
+  </div>
+</footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
