@@ -22,6 +22,7 @@ body {
   overflow-x: clip;
   width: 100%;
   position: relative;
+  transition: opacity .6s ease;
 }
 
 :root {
@@ -46,11 +47,6 @@ body {
   0%, 100% { text-shadow: 0 0 6px oklch(84% 0.09 75 / 0.15); opacity: .82; }
   50% { text-shadow: 0 0 18px oklch(84% 0.09 75 / 0.55); opacity: 1; }
 }
-@keyframes sbSheet {
-  0%, 9% { transform: translateY(calc(100% - 54px)); }
-  15%, 90% { transform: translateY(0); }
-  96%, 100% { transform: translateY(calc(100% - 54px)); }
-}
 
 /* ---------- Nav ---------- */
 
@@ -74,7 +70,7 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0 10px;
   background: linear-gradient(oklch(36% 0.03 200 / 0.5), oklch(22% 0.028 200 / 0.58));
   backdrop-filter: blur(26px) saturate(180%);
   -webkit-backdrop-filter: blur(26px) saturate(180%);
@@ -231,18 +227,7 @@ body {
   max-width: 15ch;
   animation: sbFade .6s ease .05s both;
 }
-.hero-title em { font-style: italic; color: oklch(84% 0.09 75); font-weight: 500; position: relative; white-space: nowrap; }
-.hero-title em::after {
-  content: "";
-  position: absolute;
-  left: 0.04em;
-  right: 0.06em;
-  bottom: -0.06em;
-  height: 0.16em;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M2 7 Q 30 2.5 60 5.5 T 118 4.5' fill='none' stroke='%23ecc987' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;
-  background-size: 100% 100%;
-  opacity: .85;
-}
+.hero-title em { font-style: italic; color: oklch(84% 0.09 75); font-weight: 500; }
 
 .hero-sub {
   font-size: clamp(16px, 1.9vw, 20px);
@@ -1381,38 +1366,52 @@ body {
     bottom: 12px;
     z-index: 40;
     flex: 1 1 100%;
-    gap: 14px;
-    padding: 14px 16px 16px;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 18px;
     border-radius: 20px;
     background: oklch(22% 0.028 200 / 0.92);
     backdrop-filter: blur(18px) saturate(160%);
     -webkit-backdrop-filter: blur(18px) saturate(160%);
     border: 1px solid oklch(40% 0.035 200 / 0.55);
     box-shadow: 0 18px 44px -16px oklch(8% 0.02 200 / 0.65);
+    transition: opacity .6s ease .15s;
   }
+  .customize.bar-hidden { opacity: 0; pointer-events: none; }
   .customize > div:first-child { display: none; }
-  .customize .option-label { color: oklch(76% 0.03 200); margin-bottom: 8px; }
+  .customize > div:nth-child(2) { flex: 1; min-width: 0; }
+  .customize .option-label { color: oklch(76% 0.03 200); margin-bottom: 6px; }
+
+  /* Store type: vertical wheel picker (iPhone-alarm style) — active row
+     centered, neighbors peeking above/below, tap a row to select it */
   .store-opts {
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 8px;
-    padding-bottom: 2px;
-    scrollbar-width: none;
+    display: block;
+    height: 90px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 32%, black 68%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 32%, black 68%, transparent);
   }
-  .store-opts::-webkit-scrollbar { display: none; }
   .store-opt {
-    flex: 0 0 auto;
-    width: auto;
-    padding: 9px 14px;
-    background: oklch(30% 0.03 200 / 0.6);
-    border-color: oklch(44% 0.035 200 / 0.6);
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    opacity: .4;
+    transform: translateY(var(--wheel-shift, 30px));
+    transition: transform .4s cubic-bezier(.22,.61,.36,1), opacity .3s ease;
   }
-  .store-opt-label { color: oklch(94% 0.008 200); font-size: 13px; }
+  .store-opt.active { opacity: 1; background: none; }
+  .store-opt-label { color: oklch(94% 0.008 200); font-size: 13.5px; white-space: nowrap; }
+  .store-opt.active .store-opt-label { color: oklch(84% 0.09 75); }
   .store-opt-sub { display: none; }
-  .store-opt.active {
-    background: oklch(84% 0.09 75 / 0.16);
-    border-color: oklch(84% 0.09 75);
-  }
+
+  .accent-opts { display: grid; grid-template-columns: repeat(3, 26px); gap: 9px; }
+  .accent-dot { width: 26px; height: 26px; }
   .accent-dot.active { box-shadow: 0 0 0 2px oklch(84% 0.09 75); }
 
   /* How it works: vertical flow — number left, text right, arrows dropping
@@ -1433,17 +1432,18 @@ body {
     grid-row: 2;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    padding: 10px 0;
+    gap: 0;
+    padding: 7px 0 9px;
   }
-  .step-down svg { display: block; flex-shrink: 0; }
-  .step-down-line { flex: 1; min-height: 22px; width: 0; border-left: 2px dashed oklch(78% 0.015 200); }
+  .step-down svg { display: block; flex-shrink: 0; margin-top: -4px; }
+  .step-down-line { flex: 1; min-height: 24px; width: 0; border-left: 2px dashed oklch(78% 0.015 200); }
   .step-down--brass .step-down-line { border-left-color: oklch(78% 0.06 78); }
 }
 
 @media (max-width: 700px) {
   /* Hero mockup becomes a phone: storefront in a handset frame with the
      Sparkbar widget rising and dipping as a bottom sheet */
+  .hero { padding-bottom: 44px; }
   .browser-wrap { max-width: 375px; margin-left: auto; margin-right: auto; }
   .browser {
     display: flex;
@@ -1462,9 +1462,11 @@ body {
     bottom: 0;
     width: auto;
     border-radius: 18px 18px 0 0;
-    animation: sbSheet 18s ease-in-out infinite;
+    transform: translateY(calc(100% - 54px));
+    transition: transform .55s cubic-bezier(.22,.61,.36,1);
   }
-  .widget-head { position: relative; padding-top: 17px; }
+  .widget.open { transform: translateY(0); }
+  .widget-head { position: relative; padding-top: 17px; cursor: pointer; }
   .widget-head::before {
     content: "";
     position: absolute;

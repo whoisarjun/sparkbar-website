@@ -21,6 +21,13 @@ document.querySelectorAll('.mobile-menu-link').forEach(function (link) {
   });
 });
 
+/* ---------- Hero widget: tap to open/close (mobile bottom sheet) ---------- */
+
+var heroWidget = document.querySelector('.widget');
+document.querySelector('.widget-head').addEventListener('click', function () {
+  heroWidget.classList.toggle('open');
+});
+
 /* ---------- Scroll reveal ---------- */
 
 (function initReveal() {
@@ -321,14 +328,18 @@ function startPlaying(key) {
 
 /* ---------- Demo customization ---------- */
 
-document.querySelectorAll('.store-opt').forEach(function (btn) {
+var storeOptsWrap = document.querySelector('.store-opts');
+var storeOptBtns = document.querySelectorAll('.store-opt');
+
+storeOptBtns.forEach(function (btn, idx) {
   btn.addEventListener('click', function () {
     var key = btn.dataset.store;
     if (key === storeKey) return;
     storeKey = key;
-    document.querySelectorAll('.store-opt').forEach(function (b) {
+    storeOptBtns.forEach(function (b) {
       b.classList.toggle('active', b === btn);
     });
+    storeOptsWrap.style.setProperty('--wheel-shift', (30 - idx * 30) + 'px');
     demoStoreName.textContent = stores[key].name;
     demoStoreTagline.textContent = stores[key].tagline;
     startPlaying(key);
@@ -347,5 +358,22 @@ document.querySelectorAll('.accent-dot').forEach(function (btn) {
     });
   });
 });
+
+/* ---------- Customize bar: fade in with the demo (mobile) ---------- */
+
+(function initCustomizeFade() {
+  if (!('IntersectionObserver' in window)) return;
+  var bar = document.querySelector('.customize');
+  var panel = document.querySelector('.demo-panel');
+  if (!bar || !panel) return;
+  bar.classList.add('bar-hidden');
+  var io = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) {
+      bar.classList.remove('bar-hidden');
+      io.disconnect();
+    }
+  }, { threshold: 0.15 });
+  io.observe(panel);
+})();
 
 startPlaying(storeKey);
