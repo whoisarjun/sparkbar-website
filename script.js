@@ -330,21 +330,32 @@ function startPlaying(key) {
 
 var storeOptsWrap = document.querySelector('.store-opts');
 var storeOptBtns = document.querySelectorAll('.store-opt');
+var WHEEL_ROW = 34; /* matches mobile .store-opt height */
 
 storeOptBtns.forEach(function (btn, idx) {
   btn.addEventListener('click', function () {
+    storeOptsWrap.scrollTo({ top: idx * WHEEL_ROW, behavior: 'smooth' });
     var key = btn.dataset.store;
     if (key === storeKey) return;
     storeKey = key;
     storeOptBtns.forEach(function (b) {
       b.classList.toggle('active', b === btn);
     });
-    storeOptsWrap.style.setProperty('--wheel-shift', (30 - idx * 30) + 'px');
     demoStoreName.textContent = stores[key].name;
     demoStoreTagline.textContent = stores[key].tagline;
     startPlaying(key);
   });
 });
+
+var wheelScrollTimer = null;
+storeOptsWrap.addEventListener('scroll', function () {
+  clearTimeout(wheelScrollTimer);
+  wheelScrollTimer = setTimeout(function () {
+    var idx = Math.round(storeOptsWrap.scrollTop / WHEEL_ROW);
+    idx = Math.max(0, Math.min(storeOptBtns.length - 1, idx));
+    if (storeOptBtns[idx].dataset.store !== storeKey) storeOptBtns[idx].click();
+  }, 100);
+}, { passive: true });
 
 document.querySelectorAll('.accent-dot').forEach(function (btn) {
   btn.addEventListener('click', function () {
@@ -359,7 +370,7 @@ document.querySelectorAll('.accent-dot').forEach(function (btn) {
   });
 });
 
-/* ---------- Customize bar: fade in with the demo (mobile) ---------- */
+/* ---------- Customize bar: visible while the live demo is in frame (mobile) ---------- */
 
 (function initCustomizeFade() {
   if (!('IntersectionObserver' in window)) return;
@@ -368,11 +379,8 @@ document.querySelectorAll('.accent-dot').forEach(function (btn) {
   if (!bar || !panel) return;
   bar.classList.add('bar-hidden');
   var io = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting) {
-      bar.classList.remove('bar-hidden');
-      io.disconnect();
-    }
-  }, { threshold: 0.15 });
+    bar.classList.toggle('bar-hidden', !entries[0].isIntersecting);
+  }, { threshold: 0.3 });
   io.observe(panel);
 })();
 
