@@ -21,6 +21,31 @@ document.querySelectorAll('.mobile-menu-link').forEach(function (link) {
   });
 });
 
+/* ---------- Scroll reveal ---------- */
+
+(function initReveal() {
+  if (!('IntersectionObserver' in window)) return;
+  var els = document.querySelectorAll('.outcome-card, .how-step, .grounded-card, .price-card');
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      el.classList.add('in-view');
+      observer.unobserve(el);
+      el.addEventListener('transitionend', function done() {
+        el.classList.remove('reveal', 'in-view');
+        el.style.transitionDelay = '';
+        el.removeEventListener('transitionend', done);
+      });
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function (el, i) {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (Array.prototype.indexOf.call(el.parentNode.children, el) % 3) * 90 + 'ms';
+    observer.observe(el);
+  });
+})();
+
 /* ---------- FAQ accordion ---------- */
 
 document.querySelectorAll('.faq-item').forEach(function (item) {
