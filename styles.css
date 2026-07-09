@@ -1361,11 +1361,16 @@ body {
   /* Demo: customization becomes a sticky "remote control" pinned to the bottom
      of the screen while the demo is in view */
   .demo-panel { flex: 1 1 100%; }
+  /* Customize bar: floats fixed over the page — flies up from the bottom
+     while the live demo is in frame, flies back down when it isn't */
   .customize {
-    position: sticky;
+    position: fixed;
+    left: 12px;
+    right: 12px;
     bottom: 12px;
-    z-index: 40;
-    flex: 1 1 100%;
+    z-index: 90;
+    max-width: 480px;
+    margin: 0 auto;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
@@ -1377,12 +1382,21 @@ body {
     -webkit-backdrop-filter: blur(18px) saturate(160%);
     border: 1px solid oklch(40% 0.035 200 / 0.55);
     box-shadow: 0 18px 44px -16px oklch(8% 0.02 200 / 0.65);
-    transition: opacity .45s ease;
+    transition: transform .55s cubic-bezier(.22,.61,.36,1), opacity .4s ease;
   }
-  .customize.bar-hidden { opacity: 0; pointer-events: none; }
+  .customize.bar-hidden {
+    opacity: 0;
+    transform: translateY(calc(100% + 24px));
+    pointer-events: none;
+  }
   .customize > div:first-child { display: none; }
   .customize > div:nth-child(2) { flex: 1 1 auto; min-width: 0; }
-  .customize > div:nth-child(3) { flex: 0 0 auto; }
+  .customize > div:nth-child(3) {
+    flex: 0 0 auto;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+  }
   .customize .option-label { color: oklch(76% 0.03 200); margin-bottom: 6px; white-space: nowrap; }
 
   /* Store type: vertical snap-scroll wheel (iPhone-alarm style) — swipe or
@@ -1417,7 +1431,7 @@ body {
   .store-opt.active .store-opt-label { color: oklch(84% 0.09 75); }
   .store-opt-sub { display: none; }
 
-  .accent-opts { gap: clamp(4px, 1.6vw, 9px); }
+  .accent-opts { flex: 1; align-items: center; gap: clamp(4px, 1.6vw, 9px); }
   .accent-dot { width: clamp(19px, 6.2vw, 26px); height: clamp(19px, 6.2vw, 26px); }
   .accent-dot.active { box-shadow: 0 0 0 2px oklch(84% 0.09 75); }
 
